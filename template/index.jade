@@ -1,0 +1,29 @@
+doctype
+include ./includes/ie-conditions 
+| <!--[if (gte IE 9)|!(IE)]><!-->
+html(lang="ru") <!--<![endif]-->
+  head
+    include ./includes/meta
+    
+    title Заголовок
+    
+    include ./includes/bs-grid
+    // TODO: Header CSS (First Sections of Website: paste after release from _header.min.css here)
+    
+    // Loading fonts to HTML5 Storage
+    include ./includes/fonts
+
+    include ./includes/favicon
+
+  body
+
+    // Здесь пишем код
+
+    // HTML5 Shiv
+    include ./includes/shiv 
+    
+    // Load CSS
+    include ./includes/css-to-head
+    
+    // Loading libs js
+    include ./includes/libs
