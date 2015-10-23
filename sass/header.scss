@@ -1,14 +1,339 @@
 @import "bourbon";
-
+$main-color: #006AA1;
 body {
   font-size: 16px;
   min-width: 320px;
+  min-height: 100%;
   position: relative;
   line-height: 1.6;
-  font-family: "RobotoRegular", sans-serif;
+  font-family: "Ubuntu", $helvetica;
   overflow-x: hidden;
 }
 
+a {
+	color: $main-color;
+	&:hover, &:active {
+		color: $main-color;
+		text-decoration: none;
+	}
+}
 .hidden {
   display: none;
+}
+
+/* ======================
+* HEADER
+* =====================*/
+
+header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	height: 70px;
+	background-color: #fff;
+	border-bottom: 1px solid black;
+	.top-wrapper {
+		z-index: 100;
+	}
+	.logo {
+		float: left;
+		display: inline-block;
+		margin-top: 15px;
+		height: 100%;
+		img {
+			display: inline-block;
+			vertical-align: top;
+			width: 40px;
+			height: 40px;
+		}
+		.text {
+			display: inline-block;
+			height: 50px;
+			padding-top: 5px;
+			padding-left: 5px;
+			h2 {
+				font-size: em(20px);
+				margin: 0;
+				font-weight: normal;
+				text-transform: uppercase;
+				line-height: em(12px);
+				letter-spacing: 2px;
+			}
+			p {
+				text-transform: uppercase;
+				margin: 0;
+				color: #888888;
+				font-size: em(12px);
+				letter-spacing: 1px;
+				font-weight: bold;
+			}
+		}
+		
+	}
+	.menu {
+		float: right;
+		ul {
+			font-size: em(18px);
+			list-style: none;
+			margin: 0;
+			li {
+				padding-top: 20px;
+				position: relative;
+				text-transform: uppercase;
+				display: inline-block;
+				margin-right: 15px;
+				&:last-child {
+					margin-right: 0;
+				}
+				a {
+					display: block;
+					width: 100%;
+					height: 100%;
+					padding: 0 2px;
+					&::before {
+						content: '';
+						position: absolute;
+						width: 0;
+						top: 100%;
+						left: 0;
+						border-bottom: 2px solid $main-color;
+						transition: width .4s ease;
+					}
+					&:hover::before {
+						width: 100%;
+					}
+					&::after {
+						z-index: -1;
+						content: '';
+						position: absolute;
+						left: 0;
+						top: 0;
+						height: 100%;
+						width: 0;
+						background-color: $main-color;
+						transition: width 0.25s ease-in-out;
+					}
+					&:hover::after {
+						width: 42px;
+					}
+				}
+				&.active::before {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					border-top: 3px solid $main-color;
+				}
+			}
+		}
+	}
+	.menu.mini {
+		float: right;
+		margin-top: 20px;
+		z-index: -1;
+		ul {
+			font-size: em(18px);
+			list-style: none;
+			margin: 0;
+			width: 250px;
+			li {
+				margin-right: 0;
+				padding-top: 5px;
+				border-bottom: 1px solid lighten(#000, 90%);
+				position: relative;
+				text-transform: uppercase;
+				display: block;
+				width: 100%;
+				height: 40px;
+				border-left: 1px solid lighten(#000, 90%);
+				border-right: 1px solid lighten(#000, 90%);
+				a {
+					display: block;
+					width: 100%;
+					height: 100%;
+					padding: 0 2px;
+					i {
+						z-index: 10;
+						text-align: center;
+						display: inline-block;
+						width: 40px;
+						margin-right: 15px;
+						font-size: 18px;
+						color: $main-color;
+						padding: 0 10px;
+						transition: color 0.18s ease-in;
+					}
+					&:hover i {
+						color: #fff;
+					}
+					&::before {
+						content: '';
+						position: absolute;
+						width: 0;
+						top: 100%;
+						left: 0;
+						border-bottom: 2px solid $main-color;
+						transition: width .4s ease;
+					}
+					&:hover::before {
+						width: 100%;
+					}
+				}
+				&.active::before {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					border-top: none;
+				}
+			}
+		}
+	}
+}
+.parallax-window {
+	min-height: 600px;
+	position: relative;
+	overflow: hidden;
+}
+.splash-overlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	// background-color: rgba(0,1,88,.3);
+	background-color: rgba(0,0,0,.3);
+	.splash-wrapper {
+		display: table;
+		width: 100%;
+		height: 100%;
+		.splash-container {
+			display: table-row;
+			.splash-center {
+				display: table-cell;
+				vertical-align: middle;
+				h1 {
+					font-family: 'PT Sans Caption';
+					font-weight: normal;
+					letter-spacing: 3px;
+					font-size: em(45px);
+					color: #fff;
+					text-align: center;
+					margin-top: 50px;
+					text-transform: uppercase;
+				}
+				.buttons {
+					text-align: center;
+					// margin: 0 auto;
+					margin-top: 50px;
+					a {
+						display: inline-block;
+						color: #fff;
+						border: 3px solid white;
+						border-radius: 10px;
+						padding: 15px;
+						margin-right: 50px;
+						text-transform: uppercase;
+						transition: background-color 0.3s;
+						&:last-of-type {
+							margin-right: 0;
+						}
+						&:hover {
+							background-color: darken($main-color, 5%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+section {
+	z-index: 90;
+	background-color: #fff;
+	min-height: 300px;
+}
+
+/*** КНОПКА МЕНЮ ***/
+header .toggle_mnu {
+	position: absolute;
+	background-color: $main-color;
+	right: 15px;
+	top: 10px;
+	width: 50px;
+	height: 50px;
+	// position: fixed;
+	z-index: 200;
+	border: none;
+	outline: none;
+	padding: 10px;
+	padding-left: 13px;
+	border-radius: 10px;
+}
+
+/* Сэндвич */
+
+.nav-icon {
+	display: block;
+	width: 30px;
+	height: 30px;
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+	-webkit-transition: .5s ease-in-out;
+	-moz-transition: .5s ease-in-out;
+	-o-transition: .5s ease-in-out;
+	transition: .5s ease-in-out;
+	cursor: pointer;
+  span {
+	display: block;
+	position: absolute;
+	height: 2px;
+	width: 24px;
+	background: #fff;
+	opacity: 1;
+	left: 0;
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+	-webkit-transition: .25s ease-in-out;
+	-moz-transition: .25s ease-in-out;
+	-o-transition: .25s ease-in-out;
+	transition: .25s ease-in-out;
+  }
+  span:nth-child(1) {
+	top: 7px;
+  }
+  span:nth-child(2),
+  span:nth-child(3) {
+	top: 14px;
+  }
+  span:nth-child(4) {
+	top: 21px;
+  }
+  &.open span:nth-child(1) {
+	top: 8px;
+	width: 0%;
+	left: 50%;
+  }
+  &.open span:nth-child(2) {
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+  }
+  &.open span:nth-child(3) {
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+  }
+  &.open span:nth-child(4) {
+	top: 8px;
+	width: 0%;
+	left: 50%;
+  }
 }

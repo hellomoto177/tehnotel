@@ -61,8 +61,9 @@ gulp.task('jade', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('template/*.jade', ['jade']);
+	gulp.watch('template/includes/*.jade', ['jade']);
 	gulp.watch('sass/*.scss', ['styles']);
-	gulp.watch('app/*.css', notifyLiveReload);
+	gulp.watch('app/css/*.css', notifyLiveReload);
 	gulp.watch('app/*.html', notifyLiveReload);
 });
 
