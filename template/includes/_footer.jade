@@ -1,0 +1,43 @@
+footer#footer
+	.container
+		.row
+			.col-md-6
+				.partners
+					h3 Наши партнеры
+					ul
+						li
+							a(href="#")
+							p Ростелеком
+						li
+							a(href="#")
+							p Ростелеком
+						li
+							a(href="#")
+							p Ростелеком
+						li
+							a(href="#")
+							p Ростелеком
+			.col-md-6
+				h3 Связаться с нами
+				form(action="#" class="contact_form" novalidate)
+					label.form-group
+						span.color_element * 
+						Ваше имя:
+						input(type="text" name="name" placeholder="Имя" required data-validation-required-message="Это поле является обязательным")
+						span.help-block.text-danger
+					label.form-group
+						span.color_element * 
+						Ваш E-mail:
+						input(type="email" name="email" placeholder="E-mail" required data-validation-required-message="Это поле является обязательным" data-validation-email-message="Введен некорректный E-mail")
+						span.help-block.text-danger
+					label.form-group
+						span.color_element * 
+						Ваше сообщение:
+						textarea(name="message" placeholder="Сообщение" required  data-validation-required-message="Это поле является обязательным")
+						span.help-block.text-danger
+					button.pull-right(type="submit") Отправить
+		.row
+			.col-md-12
+				.copyright
+					p ООО &laquo;Технотел&raquo; &copy; 2015
+

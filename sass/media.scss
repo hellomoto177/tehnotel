@@ -9,13 +9,76 @@
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
-  
+    .splash-overlay {
+        .splash-wrapper {
+            min-height: 350px;
+            padding: 20px;
+            .splash-container {
+                .splash-center {
+                    h1 {
+                        font-size: 26px;
+                        margin-top: 70px;
+                    }
+                    .buttons {
+                        margin-top: 20px;
+                        text-align: center;
+                        a {
+                            // display: block;
+                            padding: 10px;
+                            margin: 0 auto;
+                            &:first-of-type {
+                                // margin-bottom: 10px;
+                                margin-right: 20px;
+                            }
+                            &:last-of-type {
+                                margin: 0 auto;
+                            }
+                        }
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
 }
 /**/
 
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
+    .splash-overlay {
+        .splash-wrapper {
+            min-height: 350px;
+            padding: 20px;
+            .splash-container {
+                .splash-center {
+                    h1 {
+                        font-size: 26px;
+                        margin-top: 70px;
+                    }
+                    .buttons {
+                        margin-top: 20px;
+                        text-align: center;
+                        a {
+                            display: block;
+                            padding: 10px;
+                            border: 1px solid white;
+                            width: 180px;
+                            margin: 0 auto;
+                            &:first-of-type {
+                                margin: 0 auto;
+                                margin-bottom: 10px;
+                            }
+                            &:last-of-type {
+                                margin: 0 auto;
+                            }
+                        }
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
   /*Disable Animation on Mobile Devices*/
   .animated {
     /*CSS transitions*/
@@ -42,7 +105,38 @@
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
-/**/
+    .splash-overlay {
+        .splash-wrapper {
+            min-height: 350px;
+            padding: 20px;
+            .splash-container {
+                .splash-center {
+                    h1 {
+                        font-size: 18px;
+                        margin-top: 70px;
+                    }
+                    .buttons {
+                        margin-top: 20px;
+                        text-align: center;
+                        a {
+                            display: block;
+                            padding: 10px;
+                            border: 1px solid white;
+                            width: 180px;
+                            margin: 0 auto;
+                            &:first-of-type {
+                                margin-bottom: 10px;
+                            }
+                            &:last-of-type {
+                                margin: 0 auto;
+                            }
+                        }
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
 }
 
 
