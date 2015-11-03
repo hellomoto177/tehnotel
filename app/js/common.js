@@ -1,12 +1,128 @@
 
+$('#formx').submit(function(e){
+	e.preventDefault();
+	var data = $('#formx').serialize();
+	// $.post( "/send.php", function( data ) {
+	//   $( ".result" ).html( data );
+	// });
+	$('.list-1').hide();
+	$('.list-2').show();
+});
 
+$('.send-close').click(function(){
+	$('.mfp-close').click();
+});
 $(document).ready(function() {
 
-$(".loader_inner").fadeOut();
-$(".loader").delay(400).fadeOut("slow");
 
-$(".splash-center h1").animated("fadeIn", "fadeOutUp");
-$(".splash-center .buttons").animated("fadeInUp", "fadeOutDown");
+	$(".popup_content").magnificPopup({
+		type:"inline",
+		midClick: true
+	});
+
+
+// Отправка заявки на обратный звонок
+
+
+$('.popup-with-form').magnificPopup({
+		type: 'inline',
+		preloader: false,
+		focus: '#name',
+		mainClass: 'my-mfp-zoom-in',
+
+		// When elemened is focused, some mobile browsers in some cases zoom in
+		// It looks not nice, so we disable it:
+		callbacks: {
+			beforeOpen: function() {
+				$('.list-2').hide();
+				$('#callback-form input').val('');
+				$('.list-1').show();
+				if($(window).width() < 700) {
+					this.st.focus = false;
+				} else {
+					this.st.focus = '#name';
+				}
+			}
+		}
+	});
+
+
+
+
+
+
+	// $('.popup-with-form').magnificPopup({
+ //      type: 'iframe',
+ //      preloader: false,
+ //      focus: '#name',
+ //      fixedContentPos: true,
+	//    fixedBgPos: true,	
+
+ //      // When elemened is focused, some mobile browsers in some cases zoom in
+ //      // It looks not nice, so we disable it:
+
+ //    });
+
+	var menu_header = new Waypoint({
+	  element: document.getElementById('splash-overlay'),
+	  handler: function() {
+	  	$('.menu-item-services').removeClass('active');
+	  	$('.menu-item-about-us').removeClass('active');
+	  	$('.menu-item-contacts').removeClass('active');
+	  },
+	  offset: -100
+	});
+	var menu_services = new Waypoint({
+	  element: document.getElementById('services'),
+	  handler: function(direction) {
+	  	// console.log(direction);
+	  	
+	  	$('.menu-item-services').addClass('active');
+	  	$('.menu-item-about-us').removeClass('active');
+	  	$('.menu-item-contacts').removeClass('active');
+	  },
+	  offset: 90
+	});
+
+	var menu_abous_us = new Waypoint({
+	  element: document.getElementById('about-us'),
+	  handler: function(direction) {
+	  	if(direction == 'up') {
+	  		$('.menu-item-services').addClass('active');
+	  		$('.menu-item-about-us').removeClass('active');
+	  		$('.menu-item-contacts').removeClass('active');	
+	  	}
+	  	else {
+		  	$('.menu-item-about-us').addClass('active');
+		  	$('.menu-item-services').removeClass('active');
+		  	$('.menu-item-contacts').removeClass('active');
+	  	}
+	  },
+	  offset: 90
+	});
+
+	var menu_contacts = new Waypoint({
+	  element: document.getElementById('contacts'),
+	  handler: function(direction) {
+	  	if(direction == 'up') {
+			$('.menu-item-about-us').addClass('active');
+		  	$('.menu-item-services').removeClass('active');
+		  	$('.menu-item-contacts').removeClass('active');
+	  	}
+	  	else {
+		  	$('.menu-item-contacts').addClass('active');
+		  	$('.menu-item-about-us').removeClass('active');
+		  	$('.menu-item-services').removeClass('active');
+	  	}
+	  },
+	  offset: 90
+	});
+
+	$(".loader_inner").fadeOut();
+	$(".loader").delay(400).fadeOut("slow");
+
+	$(".splash-center h1").animated("fadeIn", "fadeOutUp");
+	$(".splash-center .buttons").animated("fadeInUp", "fadeOutDown");
 
 	// Валидация контактной формы
 	$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
@@ -42,11 +158,18 @@ $(".splash-center .buttons").animated("fadeInUp", "fadeOutDown");
 	        $('#main-menu').css('display', 'none');
 	    }
 	}
+	$('#main-menu a').click(function(){
+		if($('#main-menu').hasClass('menu-mini')) {
+			$('#main-menu').css('display', 'none');
+		}
+		// console.log('test');
+	});
 	$(window).on('load resize',menuShow);
 	menuShow();
 	
-	$('.toggle_mnu').click(function(){
+	$('.toggle_mnu').click(function(e){
 		$('#main-menu').fadeToggle(200);
+		e.preventDefault();
 	});
 
 

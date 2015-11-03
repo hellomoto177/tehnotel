@@ -24,7 +24,120 @@ a {
   display: none;
 }
 
+.mfp-content {
+	position: relative;
+}
 
+#callback-form {
+	.list-2 {
+		display: none;
+	}
+	text-align: center;
+	width: 310px;
+	background-color: $main-color;
+	margin: auto;
+	padding: 10px;
+	h1 {
+		color: white;
+		font-weight: normal;
+		font-size: em(22px);
+		margin: 0;
+		margin-top: 30px;
+		margin-bottom: 20px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	label {
+		color: #fff;
+		display: inline-block;
+		text-align: left;
+	input {
+		border: 0;
+		outline: none;
+		display: block;
+		text-align: center;
+		margin-top: 10px;
+		margin-bottom: 20px;
+		color: $my-grey;
+		padding: 5px;
+	}
+	}
+	button {
+		color: #fff;
+	}
+	button.send {
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 20px;
+		background-color: transparent;
+		border: 1px solid rgba(255,255,255,.3);
+		outline: none;
+		text-transform: uppercase;
+		padding: 5px 15px;
+		transition: all .2s;
+		&:hover {
+		  border-color: rgba(255,255,255,.8);
+		}
+	}
+}
+
+.my-mfp-zoom-in .zoom-anim-dialog {
+	opacity: 0;
+
+	-webkit-transition: all 0.2s ease-in-out; 
+	-moz-transition: all 0.2s ease-in-out; 
+	-o-transition: all 0.2s ease-in-out; 
+	transition: all 0.2s ease-in-out; 
+
+
+
+	-webkit-transform: scale(0.8); 
+	-moz-transform: scale(0.8); 
+	-ms-transform: scale(0.8); 
+	-o-transform: scale(0.8); 
+	transform: scale(0.8); 
+}
+
+/* animate in */
+.my-mfp-zoom-in.mfp-ready .zoom-anim-dialog {
+	opacity: 1;
+
+	-webkit-transform: scale(1); 
+	-moz-transform: scale(1); 
+	-ms-transform: scale(1); 
+	-o-transform: scale(1); 
+	transform: scale(1); 
+}
+
+/* animate out */
+.my-mfp-zoom-in.mfp-removing .zoom-anim-dialog {
+	-webkit-transform: scale(0.8); 
+	-moz-transform: scale(0.8); 
+	-ms-transform: scale(0.8); 
+	-o-transform: scale(0.8); 
+	transform: scale(0.8); 
+
+	opacity: 0;
+}
+
+/* Dark overlay, start state */
+.my-mfp-zoom-in.mfp-bg {
+	opacity: 0;
+	-webkit-transition: opacity 0.3s ease-out; 
+	-moz-transition: opacity 0.3s ease-out; 
+	-o-transition: opacity 0.3s ease-out; 
+	transition: opacity 0.3s ease-out;
+}
+/* animate in */
+.my-mfp-zoom-in.mfp-ready.mfp-bg {
+	opacity: 0.8;
+}
+/* animate out */
+.my-mfp-zoom-in.mfp-removing.mfp-bg {
+	opacity: 0;
+}
 /*** Прелоадер ***/
 
 .loader {
@@ -155,13 +268,18 @@ header {
 						display: none;
 					}
 				}
-				&.active::before {
+				&::before {
 					content: '';
 					position: absolute;
 					top: 0;
 					left: 0;
 					width: 100%;
 					border-top: 3px solid $main-color;
+					transition: all .3s;
+					opacity: 0;
+				}
+				&.active::before {
+					opacity: 1;
 				}
 			}
 		}
@@ -292,7 +410,7 @@ header {
 					a {
 						display: inline-block;
 						color: #fff;
-						border: 3px solid white;
+						border: 1px solid white;
 						border-radius: 10px;
 						padding: 15px;
 						margin-right: 50px;

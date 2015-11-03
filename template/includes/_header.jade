@@ -13,15 +13,15 @@ header
 						p Центр инсталляций
 				#main-menu.menu.hidden
 					ul
-						li.active
+						li.menu-item-services
 							a(href="#services") 
 								i.fa.fa-sitemap
 								Услуги
-						li
+						li.menu-item-about-us
 							a(href="#about-us")
 								i.fa.fa-info
 								О нас
-						li
+						li.menu-item-contacts
 							a(href="#contacts")
 								i.fa.fa-envelope
 								Контакты
@@ -32,7 +32,9 @@ header
 						span
 						span
 
-.splash-overlay
+
+
+.splash-overlay#splash-overlay
 	.splash-wrapper
 		.splash-container
 			.splash-center
@@ -40,5 +42,18 @@ header
 					Ведущий системный интегратор <br>
 					инсталляционных услуг
 				.buttons
-					a(href="#") Наши услуги
-					a(href="#") Оставить заявку
+					a.popup-with-form.popup-with-zoom-anim(href="#callback-form" ) Заказать звонок
+					#callback-form.white-popup-block.mfp-hide.zoom-anim-dialog
+						form(method="POST" id="formx" action="/")
+							.list-1
+								h1 Обратный звонок
+								label Номер телефона
+									input(type="text" placeholder="Ваш номер телефона")
+								button.send(type="submit") Заказать
+								.result
+						.list-2
+							h1. 
+								Заявка успешно <br />
+								отправлена
+
+							button.send.send-close Закрыть
